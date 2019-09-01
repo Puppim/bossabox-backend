@@ -1,0 +1,181 @@
+FORMAT: 1A
+HOST: http://localhost:3000
+
+# API VUTTR
+
+
+The Very Useful Tools to Remember (VUTTR) application is a simple repository for managing tools with their names, links, descriptions and tags.
+
+# Group VUTTR
+
+## About
+
+The POST requests for this API must be Content-Type: application / json
+# Group User
+
+## Register [/auth/register]
+
+### Register user [POST]
+
++ Request User
+
+    + Headers
+
+            Accept: application/json; charset=utf-8
+            Content-Type: application/json; charset=utf-8
+   
+    + Attributes (User)
++ Response 200 (application/json; charset=utf-8)
+    + Attributes (RUser)
+
+## Authenticate [/auth/authenticate]
+
+### Authenticate user [POST]
+
++ Request User
+
+    + Headers
+
+            Accept: application/json; charset=utf-8
+            Content-Type: application/json; charset=utf-8
+   
+    + Attributes (Login)
++ Response 200 (application/json; charset=utf-8)
+    + Attributes (RUser)
+
+
+# Group Tools
+
+##  List and Create Tools [/tools]   
+
+### Create Tools [POST]
+
++ Request Tools
+
+    + Headers
+
+            Accept: application/json; charset=utf-8
+            Content-Type: application/json; charset=utf-8
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNjcyOThlZDBkYzA5MDAyZjhlOGY2NCIsImlhdCI6MTU2NzA0MTkzNywiZXhwIjoxNTY3MTI4MzM3fQ.mwpQ6cuffHONXEM1X60UNW9bLe5llcKPZNcnjudXZt8
+   
+    + Attributes (PostTool)
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes (RPostTool)
+
+### Show Tools [GET]
++ Request Tools
+    + Headers
+
+            Accept: application/json; charset=utf-8
+            Content-Type: application/json; charset=utf-8
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNjcyOThlZDBkYzA5MDAyZjhlOGY2NCIsImlhdCI6MTU2NzA0MTkzNywiZXhwIjoxNTY3MTI4MzM3fQ.mwpQ6cuffHONXEM1X60UNW9bLe5llcKPZNcnjudXZt8
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes (array[Tool])
+
++ Response 404 (application/json; charset=utf-8s)
+    + Attributes (Error)
+
+
+## Filter Tools  [/tools?tag={Tags}]
++ Request Tools
+    + Headers
+    
+            Accept: application/json; charset=utf-8
+            Content-Type: application/json; charset=utf-8
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNjcyOThlZDBkYzA5MDAyZjhlOGY2NCIsImlhdCI6MTU2NzA0MTkzNywiZXhwIjoxNTY3MTI4MzM3fQ.mwpQ6cuffHONXEM1X60UNW9bLe5llcKPZNcnjudXZt8
+
++ Parameters
+    + Tags: Node (string, required) - Tool Tag
+
+### Filter Tools by tags[GET]
++ Request Tools
+    + Headers
+    
+            Accept: application/json; charset=utf-8
+            Content-Type: application/json; charset=utf-8
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNjcyOThlZDBkYzA5MDAyZjhlOGY2NCIsImlhdCI6MTU2NzA0MTkzNywiZXhwIjoxNTY3MTI4MzM3fQ.mwpQ6cuffHONXEM1X60UNW9bLe5llcKPZNcnjudXZt8
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes (array[Tool])
+    
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (Error)
+
+## Delete by ID [/tools/{Idtools}]
+
++ Request
+    + Headers
+
+            Accept: application/json; charset=utf-8
+            Content-Type: application/json; charset=utf-8
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNjcyOThlZDBkYzA5MDAyZjhlOGY2NCIsImlhdCI6MTU2NzA0MTkzNywiZXhwIjoxNTY3MTI4MzM3fQ.mwpQ6cuffHONXEM1X60UNW9bLe5llcKPZNcnjudXZt8
+
++ Parameters
+    + Idtools: 5d3da98edfa4ed01a90c0987 (number, required) - Tools id
+
+### Delete Tools [DELETE]
++ Request
+    + Headers
+
+            Accept: application/json; charset=utf-8
+            Content-Type: application/json; charset=utf-8
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNjcyOThlZDBkYzA5MDAyZjhlOGY2NCIsImlhdCI6MTU2NzA0MTkzNywiZXhwIjoxNTY3MTI4MzM3fQ.mwpQ6cuffHONXEM1X60UNW9bLe5llcKPZNcnjudXZt8
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes (Idtools)
+
++ Response 404 (application/json; charset=utf-8)
+    + Attributes (Error)
+
+
+# Data Structures
+
+## RPostTool (object)
++ title: Node (string) - Tools names
++ link: www.node.com (string) - Tools links
++ description: sevidorjs (string) - Tools descriptions
++ tags: EcmaScript7,ECS7 (array[string]) - Tools tags
++ __v: 0 (number)
++ _id: 5d3da98edfa4ed01a90c0987 (string)
+
+## PostTool (object)
++ title: Node (string) - Tools names
++ link: www.node.com (string) - Tools links
++ description: sevidorjs (string) - Tools descriptions
++ tags: EcmaScript7,ECS7 (array[string]) - Tools tags
+
+## Tags (object)
++ tag (string) - Tag name
+
+## Tool (object)
++ id: 5d3da98edfa4ed01a90c0987 (string) - Tools id
++ title: Node (string) - Tools names
++ link: www.node.com (string) - Tools links
++ description: sevidorjs (string) - Tools descriptions
++ tags: EcmaScript7,ECS7 (array[string]) - Tools tags
+
+## Created (object)
++ id (string) - Id generated
+
+## Idtools (object)
++ id (string) - Tools id
+
+## Error (object)
++ code: 400 (number) - Status code
++ message (string) - Tools status
++ description (string) - status description
+
+## Login (object)
++ email: diogopuppimdeOliveira@email.com  (string) - email
++ password: 123456  (string) - password
+
+## User (Login)
++ name: huguinho (string) - Username
+
+## RUser (User) 
++token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNjcyOThlZDBkYzA5MDAyZjhlOGY2NCIsImlhdCI6MTU2NzA0MTkzNywiZXhwIjoxNTY3MTI4MzM3fQ.mwpQ6cuffHONXEM1X60UNW9bLe5llcKPZNcnjudXZt8 (string) - token
+
+## Token (object)
+ +token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNjcyOThlZDBkYzA5MDAyZjhlOGY2NCIsImlhdCI6MTU2NzA0MTkzNywiZXhwIjoxNTY3MTI4MzM3fQ.mwpQ6cuffHONXEM1X60UNW9bLe5llcKPZNcnjudXZt8 (string) - token
